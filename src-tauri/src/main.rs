@@ -1,8 +1,9 @@
+#![cfg_attr(
+    all(not(debug_assertions), target_os = "windows"),
+    windows_subsystem = "windows"
+)]
+
 use std::process::Command;
-
-
-
-
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -11,7 +12,7 @@ fn greet(name: &str) -> String {
 #[tauri::command]
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![greet,screen_shot,start_stream,start_recording,end_stream,save_stream1,display_stream,screenshot_stream])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
@@ -56,13 +57,14 @@ fn start_stream() -> () {
         .expect("did NOT WORK STARTING STREAM");
 }
 
-fn play_stream() -> () {
+#[tauri::command]
+fn display_stream() -> () {
     let mut playstreamcmd = Command::new("ffplay");
     playstreamcmd.arg("udp://127.0.0.1:3000");
     playstreamcmd.status().expect("dID NOT PLAY STREAM");
 }
-
-fn save_stream() -> () {
+#[tauri::command]
+fn save_stream1() -> () {
     let mut savestreamcmd = Command::new("ffmpeg");
     savestreamcmd.arg("-i");
     savestreamcmd.arg("udp://127.0.0.1:3000");
@@ -115,7 +117,7 @@ fn end_stream() -> () {
     let mut end_stream = Command::new("q");
     end_stream.status().expect("NOOO! stream end");
 }
-
+#[tauri::command]
 fn screenshot_stream() -> () {
     let mut screenshot_stream = Command::new("ffmpeg");
     screenshot_stream.arg("-i");

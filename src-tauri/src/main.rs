@@ -9,6 +9,7 @@ use std::process::Command;
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
+
 #[tauri::command]
 fn main() {
     tauri::Builder::default()
@@ -19,7 +20,6 @@ fn main() {
 
 #[tauri::command]
 fn screen_shot() -> () {
-    println!("IM ALIVE");
     //https://doc.rust-lang.org/std/process/struct.Command.html
     let mut screenshotcmd = Command::new("ffmpeg");
     screenshotcmd.arg("-f");
@@ -31,7 +31,9 @@ fn screen_shot() -> () {
     screenshotcmd.arg("-strftime");
     screenshotcmd.arg("1");
     screenshotcmd.arg("F:\\School\\Capstone\\output%H%M%S.png");
-    screenshotcmd.status().expect("DID NTO WORK LOSER");
+    screenshotcmd
+        .status()
+        .expect("DID NTO WORK LOSER");
 }
 
 #[tauri::command]

@@ -31,7 +31,7 @@ fn screen_shot() -> () {
     screenshotcmd.arg("-strftime");
     screenshotcmd.arg("1");
     //screenshotcmd.arg("F:\\School\\Capstone\\output%H%M%S.png");
-    screenshotcmd.arg("E:\\sers\\ams676\\FFMPEGPROJECTCACHE\\output%H%M%S.png");
+    screenshotcmd.arg("E:\\Users\\ams676\\FFMPEGPROJECTCACHE\\output%H%M%S.png");
     screenshotcmd
         .status()
         .expect("DID NTO WORK LOSER");

@@ -12,7 +12,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   document
-  .querySelector("#StartStreamingDesktop")
+  .querySelector("#recordbtn")
+  .addEventListener("click", () => invoke("start_stream"));
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  document
+  .querySelector("#actionReplaybtn")
   .addEventListener("click", () => invoke("start_stream"));
 });
 

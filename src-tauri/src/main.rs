@@ -31,14 +31,14 @@ fn screen_shot() -> () {
     screenshotcmd.arg("-strftime");
     screenshotcmd.arg("1");
     //screenshotcmd.arg("F:\\School\\Capstone\\output%H%M%S.png");
-    screenshotcmd.arg("E:\\Ucd sers\\ams676\\FFMPEGPROJECTCACHE\\output%H%M%S.png");
+    screenshotcmd.arg("E:\\Users\\ams676\\FFMPEGPROJECTCACHE\\output%H%M%S.png");
     screenshotcmd
         .status()
         .expect("DID NTO WORK LOSER");
 }
 
 #[tauri::command]
-fn start_stream() -> () {
+async fn start_stream() -> () {
     let mut startstreamcmd = Command::new("ffmpeg");
     startstreamcmd.arg("-f");
     startstreamcmd.arg("gdigrab");

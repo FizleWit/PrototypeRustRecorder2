@@ -31,7 +31,7 @@ fn screen_shot() -> () {
     screenshotcmd.arg("-strftime");
     screenshotcmd.arg("1");
     //screenshotcmd.arg("F:\\School\\Capstone\\output%H%M%S.png");
-    screenshotcmd.arg("E:\\Users\\ams676\\FFMPEGPROJECTCACHE\\output%H%M%S.png");
+    screenshotcmd.arg("E:\\Ucd sers\\ams676\\FFMPEGPROJECTCACHE\\output%H%M%S.png");
     screenshotcmd
         .status()
         .expect("DID NTO WORK LOSER");
@@ -101,7 +101,7 @@ fn start_recording() -> () {
     startrecording.arg("desktop");
     startrecording.arg("-f");
     startrecording.arg("dshow");
-    startrecording.arg("-i");
+  //  startrecording.arg("-i");
   //  startrecording.arg("audio=\"Microphone (Arctis Nova Pro Wireless)\"");
     startrecording.arg("-crf");
     startrecording.arg("0");
